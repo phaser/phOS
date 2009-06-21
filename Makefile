@@ -15,3 +15,6 @@ clean:
 .s.o:
 	nasm $(NASM_FLAGS) $<
 
+qemu-start:
+	@echo "Starting qemu"
+	@./boot.sh qemu

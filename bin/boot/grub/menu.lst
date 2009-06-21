@@ -1,0 +1,6 @@
+default 0
+timeout 30
+title My_Kernel
+kernel /kernel
+boot
+
