@@ -1,0 +1,10 @@
+Boot related
+------------
+
+1. Multiboot specification - http://www.uruk.org/orig-grub/boot-proposal.html
+
+OS Theory
+---------
+
+x86 specific
+------------

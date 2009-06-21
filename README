@@ -1,0 +1,18 @@
+== Description ==
+
+	phOS is a little toy OS that I'm developing in order to learn about
+operating systems. 
+
+== Prerequisites ==
+
+	I'm using Ubuntu Jaunty for development and so I'm using the following
+tools versions. It could be possible for the project to compile with different
+versions of the tools but these versions are the ones that I use.
+
+	- gcc		4.3.3
+	- nasm		2.05.01
+	- gnu make	3.81
+
+== Compiling ==
+
+TODO
