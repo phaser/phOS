@@ -15,7 +15,7 @@ mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-in
 echo $1
 if [ "$1" = "qemu" ]; then
 	echo "Booting... in QEMU"
-	qemu -no-kqemu -s -cdrom grub.iso -boot d -s
+	qemu -no-kqemu -s -cdrom grub.iso -boot d
 else
 	echo "Booting... in Bochs"
 	bochs -f bochs.cfg

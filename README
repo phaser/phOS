@@ -9,10 +9,22 @@ operating systems.
 tools versions. It could be possible for the project to compile with different
 versions of the tools but these versions are the ones that I use.
 
+Compile
 	- gcc		4.3.3
 	- nasm		2.05.01
 	- gnu make	3.81
 
+Test	
+	- genisoimage	1.1.9 (mkisofs)
+	- qemu		0.10.0
+	- bochs		2.3.7
+
 == Compiling ==
 
-TODO
+	If you have all the tools in PATH a simple make should compile the project.
+
+== Testing ==
+	
+	To run the kernel in qemu just type 'make qemu-start' or 'make bochs-start'
+for bochs.
+

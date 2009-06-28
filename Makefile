@@ -1,8 +1,8 @@
-SOURCES=arch/boot.o kernel/main.o
+SOURCES=arch/monitor.o arch/boot.o kernel/main.o
 
-CFLAGS=-nostdlib -nostdinc -fno-builtin -fno-stack-protector
+CFLAGS=-I./include -nostdlib -nostdinc -fno-builtin -fno-stack-protector
 LDFLAGS=-Tlink.ld
-NASM_FLAGS=-felf
+NASM_FLAGS=-felf -g
 
 all: $(SOURCES) link
 
@@ -18,3 +18,7 @@ clean:
 qemu-start:
 	@echo "Starting qemu"
 	@./boot.sh qemu
+
+bochs-start:
+	@echo "Starting bochs"
+	@./boot.sh
