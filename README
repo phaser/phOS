@@ -13,6 +13,7 @@ Compile
 	- gcc		4.3.3
 	- nasm		2.05.01
 	- gnu make	3.81
+	- gnu ld	2.19.1
 
 Test	
 	- genisoimage	1.1.9 (mkisofs)

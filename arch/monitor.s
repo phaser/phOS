@@ -108,6 +108,12 @@ move:
 	out dx, al
 	ret
 
+; void clrscr()
+; clears the screen
 clrscr:
-	
+	mov ecx, 0x7D0		; 80 * 25
+	mov edi, 0xB8000
+	mov ah, 0x0F
+	mov al, 0x20	
+	rep stosw		
 	ret

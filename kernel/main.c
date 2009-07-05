@@ -2,8 +2,9 @@
 
 int main (int argc, char** argv)
 {
+	clrscr();
 	move();
-	printk ("hello\nworld\n%h\n%d\n%h\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", 100, 120, 0);
+	printk ("hello\nworld\n%h\n%d\n%h", 100, 120, 0);
 	return 0xABCDEF00;
 }
 

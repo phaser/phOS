@@ -7,6 +7,7 @@
 extern void putc (u8 c);
 extern void move ();
 extern void scroll ();
+extern void clrscr ();
 
 void printk (u8* str, ...);
 void monitor_write_dec (s32 c);
