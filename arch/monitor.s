@@ -8,6 +8,7 @@ _cy		dd	0
 [GLOBAL putc]
 [GLOBAL move]
 [GLOBAL scroll]
+[GLOBAL clrscr]
 
 ; void putc (int char)
 ; puts a character on the screen
@@ -59,22 +60,23 @@ putc:
 	jl .rexit
 	mov word [_cx], 0x0
 	inc word [_cy]
-	call scroll			; if it's necessary scroll the screen
 .rexit:
+	call scroll			; if it's necessary scroll the screen
 	pop ebp
 	ret
 
 ; void scroll()
 ; scrolls the screen one line
 scroll:
-	cmp word [_cy], 0x50
+	cmp word [_cy], 0x19
 	jl .scrolle
 	mov eax, 0xB8000
 .memcpy:
 	mov ecx, 0x50
-	mov esi, eax			; source
-	lea edi, [eax+0xA0]		; destination
+	lea esi, [eax+0xA0]		; source
+	mov edi, eax			; destinaon
 	rep movsw
+	add eax, 0xA0
 	cmp eax, 0xBB160
         jle .memcpy
 	dec word [_cy]
@@ -85,7 +87,7 @@ scroll:
 ; void move ()
 ; it moves the cursor to _cx, _cy coordinates
 move:
-	mov eax, [_cy]		;
+	lea eax, [_cy]		;
 	mov ebx, 0x50		; _cy * 80 + _cx
 	mul ebx			;
 	add eax, [_cx]		;
@@ -106,3 +108,6 @@ move:
 	out dx, al
 	ret
 
+clrscr:
+	
+	ret
