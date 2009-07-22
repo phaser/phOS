@@ -10,4 +10,6 @@ typedef		 short  s16;
 typedef unsigned char	u8;
 typedef		 char	s8;
 
+void printk (u8* str, ...);
+
 #endif

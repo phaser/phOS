@@ -1,4 +1,4 @@
-SOURCES=arch/monitor.o arch/boot.o kernel/main.o kernel/monitor.o
+SOURCES=arch/monitor.o arch/boot.o kernel/main.o kernel/monitor.o arch/tables.o kernel/hw_tables.o
 
 CFLAGS=-I./include -nostdlib -nostdinc -fno-builtin -fno-stack-protector
 LDFLAGS=-Tlink.ld
