@@ -6,7 +6,7 @@ void printk (u8* format, ...)
 {
 	va_list args;
 	va_start (args, format);
-	s8 *c = format;
+	u8 *c = format;
 	while (*c) {
 		if (*c == '%') {
 	 	 	 *c = '\0'; ++c;
