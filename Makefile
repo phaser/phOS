@@ -1,6 +1,6 @@
-SOURCES=arch/monitor.o arch/boot.o kernel/monitor.o arch/tables.o kernel/hw_tables.o kernel/Video.o kernel/Kernel.o
+SOURCES=arch/monitor.o arch/boot.o arch/tables.o kernel/hw_tables.o kernel/Video.o kernel/Kernel.o
 
-CXXFLAGS=-I./include -m32 -ffreestanding -fno-rtti -fno-exceptions -nostdlib -nostdinc -fno-builtin -fno-stack-protector
+CXXFLAGS=-I./include -m32 -ffreestanding -fno-rtti -fno-exceptions -nostdlib -nostdinc -fno-stack-protector
 CFLAGS=$(CXXFLAGS)
 LDFLAGS=-m elf_i386 -Tlink.ld
 NASM_FLAGS=-felf -g

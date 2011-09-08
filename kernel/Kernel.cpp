@@ -3,6 +3,6 @@
 int main(void)
 {
 	Video vid;
-	vid.write("Hello, world!");
+	vid.printk("Hello, world! %d", 10);
 	return 0xABCD0123;
 }
