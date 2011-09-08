@@ -2,11 +2,11 @@
 #include <phos/stdio.h>
 #include <phos/kernel.h>
 
-void printk (u8* format, ...)
+void printk (s8* format, ...)
 {
 	va_list args;
 	va_start (args, format);
-	u8 *c = format;
+	s8 *c = format;
 	while (*c) {
 		if (*c == '%') {
 	 	 	 *c = '\0'; ++c;
@@ -31,7 +31,7 @@ void printk (u8* format, ...)
 	move();
 }
 
-void monitor_write (const u8* str)
+void monitor_write (const s8* str)
 {
 	while (*str != '\0')
 	{

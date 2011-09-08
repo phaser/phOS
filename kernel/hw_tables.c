@@ -4,7 +4,7 @@
 segment_descriptor gdt[5];
 gdt_ptr gdt_p;
 
-extern asm_init_gdt (u32 ptr);
+extern void asm_init_gdt (u32 ptr);
 void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags);
 
 void init_gdt()
