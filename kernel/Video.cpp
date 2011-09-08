@@ -1,5 +1,7 @@
 #include <phos/Video.hpp>
 
+void* __dso_handle;
+
 Video::Video()
 {
 	pos = 0;

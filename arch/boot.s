@@ -30,6 +30,8 @@ MBOOT_CHECKSUM		equ	-(MAGIC + MBOOT_FLAGS)	; checksum + values must be 0
 [EXTERN bss]
 [EXTERN end]
 [EXTERN main]
+[EXTERN _main]
+[EXTERN _atexit]
 
 multiboot:
 	dd	MAGIC
@@ -48,5 +50,7 @@ start:
 	push ebx	; pass the address of the multiboot structure
 
 	cli		; disable interrupts
+	call _main
 	call main
+	call _atexit
 	jmp $
