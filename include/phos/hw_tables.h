@@ -1,3 +1,9 @@
+/* The project is licensed under GNU GPL v3. See $(PROJECT_ROOT)/doc/gpl.txt for more details.
+ *
+ * phOS Operating System
+ * Copyright (C) 2009 Cristian Bidea
+ */
+
 #ifndef _HW_TABLES_H_
 #define _HW_TABLES_H_
 

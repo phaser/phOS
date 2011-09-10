@@ -5,19 +5,18 @@ operating systems.
 
 == Prerequisites ==
 
-	I'm using Ubuntu Jaunty for development and so I'm using the following
-tools versions. It could be possible for the project to compile with different
-versions of the tools but these versions are the ones that I use.
+The following tools are needed to compile and test the project.
 
 Compile
-	- gcc		4.3.3
-	- nasm		2.05.01
+	- gcc		4.5.2
+	- g++		4.5.2
+	- nasm		2.09.04
 	- gnu make	3.81
-	- gnu ld	2.19.1
+	- gnu ld	2.21.0.20110327
 
 Test	
-	- genisoimage	1.1.9 (mkisofs)
-	- qemu		0.10.0
+	- genisoimage	2.01 (mkisofs)
+	- qemu		0.14.0
 	- bochs		2.3.7
 
 == Compiling ==
@@ -28,4 +27,24 @@ Test
 	
 	To run the kernel in qemu just type 'make qemu-start' or 'make bochs-start'
 for bochs.
+
+== Licensing ==
+
+The project is licensed under GNU GPL v3. See $(PROJECT_ROOT)/doc/gpl.txt for more details.
+
+phOS Operating System
+Copyright (C) 2009 Cristian Bidea
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 

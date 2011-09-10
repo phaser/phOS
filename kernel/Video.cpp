@@ -1,4 +1,5 @@
 #include <phos/Video.hpp>
+#include <phos/stdio.h>
 
 void* __dso_handle;
 
@@ -15,8 +16,8 @@ Video::~Video()
 
 void Video::printk (s8* format, ...)
 {
-	__builtin_va_list args;
-	__builtin_va_start (args, format);
+	va_list args;
+	va_start (args, format);
 	s8 *c = format;
 	while (*c) {
 		if (*c == '%') {
@@ -24,10 +25,10 @@ void Video::printk (s8* format, ...)
 			 write (format);
 			 switch (*c) {
 			 case ('d'):
-	 	 	 	 write_dec (__builtin_va_arg(args, s32));
+	 	 	 	 write_dec (va_arg(args, s32));
 				 break;
 			 case ('h'):
-	 	 	 	 write_hex (__builtin_va_arg(args, s32));
+	 	 	 	 write_hex (va_arg(args, s32));
 				 break;
 			 }
 
@@ -38,7 +39,7 @@ void Video::printk (s8* format, ...)
 
 	write (format);
 
-	__builtin_va_end (args);
+	va_end (args);
 	move();
 }
 
