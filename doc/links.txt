@@ -2,9 +2,24 @@ Boot related
 ------------
 
 1. Multiboot specification - http://www.uruk.org/orig-grub/boot-proposal.html
+2. GRUB Tutorial - http://osdev.berlios.de/grub.html
 
 OS Theory
 ---------
 
 x86 specific
 ------------
+
+1. Intel Manuals - http://www.intel.com/support/processors/pentium4/sb/CS-029967.htm?wapkw=intel%20manuals
+2. AMD Manuals - http://developer.amd.com
+
+Standards
+---------
+
+1. Itanium C++ ABI (Revision: 1.83) - http://refspecs.freestandards.org/cxxabi-1.83.html
+2. Linux Foundation Referenced Specifications - http://refspecs.freestandards.org/
+
+Other
+-----
+
+1. Google C++ Style Guide - http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
