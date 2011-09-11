@@ -15,7 +15,7 @@ void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags);
 
 void init_gdt()
 {
-   gdt_set_entry(0, 0, 0, 0, 0);                // Null segment
+   gdt_set_entry(0, 0,          0,    0,    0); // Null segment
    gdt_set_entry(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // Code segment
    gdt_set_entry(2, 0, 0xFFFFFFFF, 0x92, 0xCF); // Data segment
    gdt_set_entry(3, 0, 0xFFFFFFFF, 0xFA, 0xCF); // User mode code segment

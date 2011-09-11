@@ -1,4 +1,11 @@
-SOURCES=arch/monitor.o arch/boot.o arch/tables.o kernel/hw_tables.o kernel/Video.o kernel/Kernel.o kernel/CPPRTSupport.o
+ASM_SOURCES=$(patsubst %.s, %.o, $(wildcard arch/x86/asm/*.s))
+ARCH_CPP_SOURCES=$(patsubst %.cpp, %.o, $(wildcard arch/x86/*.cpp)) 
+ARCH_C_SOURCES=$(patsubst %.c, %.o, $(wildcard arch/x86/*.c))
+ARCH_SOURCES=$(ARCH_CPP_SOURCES) $(ARCH_C_SOURCES)
+
+KERNEL_SOURCES=$(patsubst %.c, %.o, $(wildcard kernel/*.c)) $(patsubst %.cpp, %.o, $(wildcard kernel/*.cpp))
+
+SOURCES=$(ASM_SOURCES) $(ARCH_SOURCES) $(KERNEL_SOURCES)
 
 CXXFLAGS=-I./include -m32 -ffreestanding -fno-rtti -fno-exceptions -nostdlib -nostdinc -fno-stack-protector
 CFLAGS=-I./include -m32 -ffreestanding -fno-exceptions -nostdlib -nostdinc -fno-stack-protector
@@ -24,3 +31,6 @@ qemu-start:
 bochs-start:
 	@echo "Starting bochs"
 	@./boot.sh
+
+tags:
+	@ctags -R -f phOS.tags .

@@ -3,3 +3,5 @@
 *.iso
 *.img
 *.swp
+phOS.tags
+.vim_local
