@@ -4,10 +4,10 @@
  * Copyright (C) 2009 Cristian Bidea
  */
 
-#ifndef _HW_TABLES_H_
-#define _HW_TABLES_H_
+#ifndef _INIT_SETUP_HPP_
+#define _INIT_SETUP_HPP_
 
-#include <phos/kernel.h>
+#include <phos/Kernel.hpp>
 
 struct segment_descriptor_struct
 {
@@ -30,4 +30,4 @@ typedef struct gdt_ptr_struct gdt_ptr;
 
 void init_gdt();
 
-#endif
+#endif // _INIT_SETUP_HPP_

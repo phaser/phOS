@@ -4,13 +4,16 @@
  * Copyright (C) 2009 Cristian Bidea
  */
 
-#include <phos/hw_tables.h>
-#include <phos/kernel.h>
+#include <phos/InitSetup.hpp>
+#include <phos/Kernel.hpp>
 
 segment_descriptor gdt[5];
 gdt_ptr gdt_p;
 
-extern void asm_init_gdt (u32 ptr);
+extern "C" {
+	extern void asm_init_gdt (u32 ptr);
+}
+
 void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags);
 
 void init_gdt()

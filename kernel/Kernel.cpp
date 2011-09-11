@@ -4,10 +4,8 @@
  * Copyright (C) 2009 Cristian Bidea
  */
 
+#include <phos/InitSetup.hpp>
 #include <phos/Video.hpp>
-extern "C" {
-	#include <phos/hw_tables.h>
-}
 
 Video vid;
 

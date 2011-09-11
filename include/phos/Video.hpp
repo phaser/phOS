@@ -7,8 +7,9 @@
 #ifndef VIDEO_HPP_
 #define VIDEO_HPP_
 
+#include <phos/Kernel.hpp>
+
 extern "C" {
-	#include <phos/kernel.h>
 
 	/* Extern functions implemented in monitor.s */
 	extern void putc (s8 c);

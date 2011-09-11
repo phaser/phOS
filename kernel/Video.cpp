@@ -1,5 +1,4 @@
 #include <phos/Video.hpp>
-#include <phos/stdio.h>
 
 void* __dso_handle;
 
