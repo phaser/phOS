@@ -9,6 +9,13 @@
 
 #include <phos/Kernel.hpp>
 
+//---------------------------------------------------------------------------
+//    Defines
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+//    Type definitions
+//---------------------------------------------------------------------------
 struct segment_descriptor_struct
 {
 	u16	limit;
@@ -21,13 +28,44 @@ struct segment_descriptor_struct
 
 struct gdt_ptr_struct
 {
-	u16 limit;
-	u32 base;
+	u16 	limit;
+	u32 	base;
 } __attribute__ ((packed));
+
+struct idt_descriptor_struct
+{
+	u16 	base_lo;
+	u16 	sel;
+	u8 	always0;
+	u8 	flags;
+	u16 	base_hi;
+} __attribute__ ((packed));
+
+struct idt_ptr_struct
+{
+	u16 	limit;
+	u32 	base;
+} __attribute__ ((packed));
+
+typedef struct registers {
+	u32 ds;
+	u32 edi, esi, ebp, esp, ebx, edx, ecx, eax;
+	u32 int_no, err_code;
+	u32 eip, cs, eflags, useresp, ss;
+} registers_t;
 
 typedef struct segment_descriptor_struct segment_descriptor;
 typedef struct gdt_ptr_struct gdt_ptr;
+typedef struct idt_descriptor_struct idt_descriptor;
+typedef struct idt_ptr_struct idt_ptr;
 
-void init_gdt();
+//---------------------------------------------------------------------------
+//    Functions declaration
+//---------------------------------------------------------------------------
+void init_tables();
+static void isr_handler(registers_t regs);
+
+static void init_gdt();
+static void init_idt();
 
 #endif // _INIT_SETUP_HPP_

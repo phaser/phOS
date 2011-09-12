@@ -12,7 +12,7 @@ Video vid;
 int main(void)
 {
 	vid.printk("Hello, world! %d", 10);
-	init_gdt();
+	init_tables();
 	return 0xABCD0123;
 }
 

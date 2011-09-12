@@ -1,4 +1,10 @@
+; The project is licensed under GNU GPL v3. See $(PROJECT_ROOT)/doc/gpl.txt for more details.
+; 
+; phOS Operating System
+; Copyright (C) 2009 Cristian Bidea
+
 [GLOBAL asm_init_gdt]
+[GLOBAL asm_init_idt]
 
 asm_init_gdt:
 	mov eax, [esp+4]
@@ -12,4 +18,9 @@ asm_init_gdt:
 	mov ss, ax
 	jmp 0x08:.flush		; make a far jump into the code segment to initialize cs
 .flush:
+	ret
+
+asm_init_idt:
+	mov eax, [esp+4]
+	lidt [eax]
 	ret

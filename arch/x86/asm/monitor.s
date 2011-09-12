@@ -1,3 +1,8 @@
+; The project is licensed under GNU GPL v3. See $(PROJECT_ROOT)/doc/gpl.txt for more details.
+; 
+; phOS Operating System
+; Copyright (C) 2009 Cristian Bidea
+
 ; This file contains functions used for monitor output in text mode
 
 _cx		dd	0

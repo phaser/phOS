@@ -15,6 +15,7 @@
 #define va_arg(a, b) __builtin_va_arg ((a), b)
 #define va_end(a) __builtin_va_end ((a)) 
 #define strcpy(a, b) __builtin_strcpy ((a), (b))
+//#define memset(a, b, c) __builtin_memset((a), (b), (c))
 
 //---------------------------------------------------------------------------
 //    Type definitions
