@@ -63,8 +63,6 @@ typedef struct idt_ptr_struct idt_ptr;
 //    Functions declaration
 //---------------------------------------------------------------------------
 void init_tables();
-static void isr_handler(registers_t regs);
-
 static void init_gdt();
 static void init_idt();
 

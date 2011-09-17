@@ -13,6 +13,14 @@ int main(void)
 {
 	vid.printk("Hello, world! %d", 10);
 	init_tables();
+	while(1){}
 	return 0xABCD0123;
 }
 
+extern "C" {
+	void isr_handler(registers_t regs)
+	{
+		Video vid;
+		vid.printk("received interrupt: %d\n", regs.int_no);
+	}
+}

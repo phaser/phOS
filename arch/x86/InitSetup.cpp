@@ -153,12 +153,6 @@ static void idt_set_entry (s32 num, u32 base, u16 sel, u8 flags)
 	idt[num].flags = flags;
 }
 
-static void isr_handler(registers_t regs)
-{
-	Video vid;
-	vid.printk("received interrupt: %d\n", regs.int_no);
-}
-
 void init_tables()
 {
 	init_gdt();
