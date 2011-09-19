@@ -2,6 +2,9 @@
 
 void* __dso_handle;
 
+/**
+ * Constructor.
+ */
 Video::Video()
 {
 	pos = 0;
@@ -9,10 +12,23 @@ Video::Video()
 	videomem = (unsigned short*) 0xb8000;
 }
 
+/**
+ * Destructor.
+ */
 Video::~Video()
 {
 }
 
+/**
+ * printk is a function similar to printf.
+ *
+ * @param format - the format of the text being printed and also you can use 
+ *                 multiple switches:
+ *<ul>
+ *<li>%d - output an int value
+ *<li>%h - output an int value into hex format
+ *</ul>
+ */
 void Video::printk (s8* format, ...)
 {
 	va_list args;
@@ -42,6 +58,11 @@ void Video::printk (s8* format, ...)
 	move();
 }
 
+/**
+ * Used to write an array of characters on the screen.
+ * The scrolling of the screen is handled in the putc
+ * assembly routine.
+ */
 void Video::write (const s8* str)
 {
 	while (*str != '\0')
@@ -51,6 +72,10 @@ void Video::write (const s8* str)
 	}
 }
 
+/**
+ * Write an integer on the screen.
+ * TODO: Handle the sign.
+ */
 void Video::write_dec (s32 c)
 {
        	 u8 result[11];
@@ -68,6 +93,9 @@ void Video::write_dec (s32 c)
 	 }
 }
 
+/**
+ * Write an integer in hex format.
+ */
 void Video::write_hex (s32 c)
 {
 	 /* convert from base 10 to 16 */

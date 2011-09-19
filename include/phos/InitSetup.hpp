@@ -59,11 +59,15 @@ typedef struct gdt_ptr_struct gdt_ptr;
 typedef struct idt_descriptor_struct idt_descriptor;
 typedef struct idt_ptr_struct idt_ptr;
 
-//---------------------------------------------------------------------------
-//    Functions declaration
-//---------------------------------------------------------------------------
-void init_tables();
-static void init_gdt();
-static void init_idt();
+class KernelInit
+{
+public:
+	void init_tables();
+	void init_timer(u32 freq);
+private:
+	u32 tick;
+	void init_gdt();
+	void init_idt();
+};
 
 #endif // _INIT_SETUP_HPP_

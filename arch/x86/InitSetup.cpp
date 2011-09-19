@@ -96,9 +96,9 @@ static void idt_set_entry (s32 num, u32 base, u16 sel, u8 flags);
 static void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags);
 
 //---------------------------------------------------------------------------
-//    Functions implementation
+//    Class functions implementation
 //---------------------------------------------------------------------------
-static void init_gdt()
+void KernelInit::init_gdt()
 {
 	gdt_set_entry(0, 0,          0,    0,    0); // Null segment
 	gdt_set_entry(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // Code segment
@@ -113,19 +113,13 @@ static void init_gdt()
 	asm_init_gdt ((u32)&gdt_p);
 }
 
-static void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags)
+void KernelInit::init_tables()
 {
-	gdt[num].limit	= limit & 0xFFFF;
-	gdt[num].basel	= base & 0xFFFF;
-	gdt[num].basem	= (base >> 16) & 0xFF;
-	gdt[num].baseh	= (base >> 24) & 0xFF;
-
-	gdt[num].type	= access;
-	gdt[num].flags	= (limit >> 16) & 0xF;
-	gdt[num].flags |= flags & 0xF0;
+	init_gdt();
+	init_idt();
 }
 
-static void init_idt()
+void KernelInit::init_idt()
 {
 	idt_p.limit = sizeof(idt_descriptor) * 256 - 1;
 	idt_p.base = (u32)&idt;
@@ -176,6 +170,25 @@ static void init_idt()
 	asm_init_idt((u32)&idt_p);
 }
 
+void KernelInit::init_timer(u32 freq)
+{
+	//register_interrupt_handler(IRQ0, &timer_callback);
+}
+//---------------------------------------------------------------------------
+//    Local functions implementation
+//---------------------------------------------------------------------------
+static void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags)
+{
+	gdt[num].limit	= limit & 0xFFFF;
+	gdt[num].basel	= base & 0xFFFF;
+	gdt[num].basem	= (base >> 16) & 0xFF;
+	gdt[num].baseh	= (base >> 24) & 0xFF;
+
+	gdt[num].type	= access;
+	gdt[num].flags	= (limit >> 16) & 0xF;
+	gdt[num].flags |= flags & 0xF0;
+}
+
 static void idt_set_entry (s32 num, u32 base, u16 sel, u8 flags)
 {
 	idt[num].base_lo = base & 0xFFFF;
@@ -186,8 +199,4 @@ static void idt_set_entry (s32 num, u32 base, u16 sel, u8 flags)
 	idt[num].flags = flags;
 }
 
-void init_tables()
-{
-	init_gdt();
-	init_idt();
-}
+

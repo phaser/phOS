@@ -8,11 +8,12 @@
 #include <phos/Video.hpp>
 
 Video vid;
+KernelInit kinit;
 
 int main(void)
 {
 	vid.printk("Hello, world! %d", 10);
-	init_tables();
+	kinit.init_tables();
 	while(1){}
 	return 0xABCD0123;
 }
