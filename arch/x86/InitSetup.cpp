@@ -96,7 +96,30 @@ static void idt_set_entry (s32 num, u32 base, u16 sel, u8 flags);
 static void gdt_set_entry (s32 num, u32 base, u32 limit, u8 access, u8 flags);
 
 //---------------------------------------------------------------------------
-//    Class functions implementation
+//    PUBLIC class functions implementation
+//---------------------------------------------------------------------------
+void KernelInit::init_tables()
+{
+	init_gdt();
+	init_idt();
+}
+
+void KernelInit::init_timer(u32 freq)
+{
+	//register_interrupt_handler(IRQ0, &timer_callback);
+}
+
+void KernelInit::CallIRQHandler(registers_t regs)
+{
+	if (irqHandlers[regs.int_no] != 0)
+	{
+		ISRHandlerCallback handler = irqHandlers[regs.int_no];
+		handler(regs);
+	}
+}
+
+//---------------------------------------------------------------------------
+//    PRIVATE class functions implementation
 //---------------------------------------------------------------------------
 void KernelInit::init_gdt()
 {
@@ -111,12 +134,6 @@ void KernelInit::init_gdt()
 	gdt_p.base = (u32)&gdt;
 
 	asm_init_gdt ((u32)&gdt_p);
-}
-
-void KernelInit::init_tables()
-{
-	init_gdt();
-	init_idt();
 }
 
 void KernelInit::init_idt()
@@ -170,10 +187,11 @@ void KernelInit::init_idt()
 	asm_init_idt((u32)&idt_p);
 }
 
-void KernelInit::init_timer(u32 freq)
+void KernelInit::RegisterInterruptHandler(u8 n, ISRHandlerCallback handler)
 {
-	//register_interrupt_handler(IRQ0, &timer_callback);
+	irqHandlers[n] = handler;
 }
+
 //---------------------------------------------------------------------------
 //    Local functions implementation
 //---------------------------------------------------------------------------

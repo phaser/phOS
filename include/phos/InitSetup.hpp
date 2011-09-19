@@ -14,7 +14,7 @@
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-//    Type definitions
+//    Structs and type definitions
 //---------------------------------------------------------------------------
 struct segment_descriptor_struct
 {
@@ -58,16 +58,24 @@ typedef struct segment_descriptor_struct segment_descriptor;
 typedef struct gdt_ptr_struct gdt_ptr;
 typedef struct idt_descriptor_struct idt_descriptor;
 typedef struct idt_ptr_struct idt_ptr;
+typedef void (*ISRHandlerCallback)(registers_t);
 
+//---------------------------------------------------------------------------
+//    Class definitions
+//---------------------------------------------------------------------------
 class KernelInit
 {
 public:
 	void init_tables();
 	void init_timer(u32 freq);
+	void CallIRQHandler(registers_t regs);
 private:
 	u32 tick;
+	ISRHandlerCallback irqHandlers[256];
+
 	void init_gdt();
 	void init_idt();
+	void RegisterInterruptHandler(u8 n, ISRHandlerCallback handler);
 };
 
 #endif // _INIT_SETUP_HPP_

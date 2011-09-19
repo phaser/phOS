@@ -23,5 +23,13 @@ extern "C" {
 	{
 		Video vid;
 		vid.printk("received interrupt: %d\n", regs.int_no);
+		if (regs.int_no >= 40)
+		{
+			__builtin_outb(0xA0, 0x20);
+		}
+
+		__builtin_outb(0x20, 0x20);
+
+		kinit.CallIRQHandler(regs);
 	}
 }
