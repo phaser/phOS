@@ -14,6 +14,7 @@ int main(void)
 {
 	vid.printk("Hello, world! %d", 10);
 	kinit.init_tables();
+	kinit.init_timer(100);
 	while(1){}
 	return 0xABCD0123;
 }
@@ -23,13 +24,6 @@ extern "C" {
 	{
 		Video vid;
 		vid.printk("received interrupt: %d\n", regs.int_no);
-		if (regs.int_no >= 40)
-		{
-			_outp(0xA0, 0x20);
-		}
-
-		_outp(0x20, 0x20);
-
 		kinit.CallIRQHandler(regs);
 	}
 }

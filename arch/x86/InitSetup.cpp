@@ -5,7 +5,6 @@
  */
 
 #include <phos/InitSetup.hpp>
-#include <phos/Video.hpp>
 
 #define IRQ0	0
 #define IRQ1	1
@@ -48,6 +47,7 @@ segment_descriptor gdt[5];
 gdt_ptr gdt_p;
 idt_descriptor idt[256];
 idt_ptr idt_p;
+u32 tick;
 
 //---------------------------------------------------------------------------
 //    Extern defines
@@ -104,9 +104,20 @@ void KernelInit::init_tables()
 	init_idt();
 }
 
+void timer_callback(registers_t regs)
+{
+	Video vout;
+	tick++;
+	vout.printk("Tick %d\n", tick);
+}
+
 void KernelInit::init_timer(u32 freq)
 {
-	//register_interrupt_handler(IRQ0, &timer_callback);
+	RegisterInterruptHandler(IRQ0, &timer_callback);
+
+	u32 divisor = 1193180 / freq;
+
+
 }
 
 void KernelInit::CallIRQHandler(registers_t regs)

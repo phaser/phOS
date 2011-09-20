@@ -8,6 +8,7 @@
 #define _INIT_SETUP_HPP_
 
 #include <phos/Kernel.hpp>
+#include <phos/Video.hpp>
 
 //---------------------------------------------------------------------------
 //    Defines

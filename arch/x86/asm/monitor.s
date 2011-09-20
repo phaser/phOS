@@ -67,6 +67,7 @@ putc:
 	inc word [_cy]
 .rexit:
 	call scroll			; if it's necessary scroll the screen
+	mov esp, ebp
 	pop ebp
 	ret
 
