@@ -11,6 +11,7 @@ _cy		dd	0
 [BITS 32]	; 32 bits instructions
 
 [GLOBAL putc]
+[GLOBAL outb]
 [GLOBAL move]
 [GLOBAL scroll]
 [GLOBAL clrscr]
@@ -123,3 +124,14 @@ clrscr:
 	mov al, 0x20	
 	rep stosw		
 	ret
+
+outb:
+	push ebp
+	mov ebp, esp
+	mov ax, [ebp+8]
+	mov dx, [ebp+12]
+	out dx, ax
+	mov esp, ebp
+	pop ebp
+	ret
+

@@ -4,6 +4,7 @@
  * Copyright (C) 2009 Cristian Bidea
  */
 
+#include <phos/Kernel.hpp>
 #include <phos/InitSetup.hpp>
 #include <phos/Video.hpp>
 
@@ -24,6 +25,12 @@ extern "C" {
 	{
 		Video vid;
 		vid.printk("received interrupt: %d\n", regs.int_no);
+		if (regs.int_no >= 40) {
+			outb(0xA0, 0x20);
+		}
+
+		outb(0x20, 0x20);
+
 		kinit.CallIRQHandler(regs);
 	}
 }

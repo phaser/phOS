@@ -32,6 +32,10 @@ typedef		 char	s8;
 //---------------------------------------------------------------------------
 //    Functions declaration
 //---------------------------------------------------------------------------
+extern "C" {
+	extern void outb(u32 port, u32 value); 
+}
+
 void printk (s8* str, ...);
 
 #endif // _KERNEL_HPP_
